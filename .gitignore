@@ -1,0 +1,6 @@
+# Local evidence package — contains distilled excerpts of private chats.
+# Keep local for reference; never publish to the open-source skill repo.
+research/
+
+# macOS
+.DS_Store
