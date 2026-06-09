@@ -1,6 +1,6 @@
 # deep-dive
 
-Rigorous multi-agent deep-dive analysis for Claude Code. Point it at a codebase, a trading/strategy system, a design, or an open research question and it runs a structured investigation instead of giving a one-shot answer.
+Rigorous multi-agent deep-dive analysis for Claude Code. Point it at a codebase, a strategy or decision system, a design, or an open research question and it runs a structured investigation instead of giving a one-shot answer.
 
 ## What it does
 
@@ -14,7 +14,9 @@ For a complex, investigative task, the skill runs a multi-phase pipeline:
 
 It scales down for narrow scope (2–3 lanes) and up for broad, multi-domain work (6 lanes). By default it runs in **pure research mode** — it writes markdown findings and changes no code unless you explicitly ask.
 
-Four built-in variants live in `deep-dive/references/`: **codebase audit**, **strategy evaluation**, **design evaluation**, and **open-ended research**.
+Four built-in variants live in `deep-dive/references/`: **codebase audit**, **strategy / system evaluation**, **design evaluation**, and **open-ended research**.
+
+> **Heads up — this skill is token-hungry by design.** A full run fans out 4–6 specialist agents (each writing thousands of words), then synthesis, follow-up verification, a red-team pass, and a briefing — easily 10+ agent calls and tens of thousands of tokens for a single analysis. That's the right trade for a high-stakes call (a ship/no-ship decision, real money on the line), and a great fit on a **Claude Max** plan or any setup where you're not token-constrained. On a smaller plan, reach for it deliberately: use the *Scale heuristics* in `SKILL.md` (2–3 lanes for narrow scope, skip the red-team for low-stakes work), or just ask for a single-pass review instead.
 
 ## Install
 
@@ -58,7 +60,7 @@ This follows the open **[Agent Skills](https://agentskills.io) standard**, so th
 Examples:
 
 - "Do a deep dive on this codebase before I ship it."
-- "Evaluate whether this trading strategy is actually profitable."
+- "Evaluate whether this strategy actually holds up under scrutiny."
 - "Is this the right architecture? Review it thoroughly."
 
 ## What's in this repo
