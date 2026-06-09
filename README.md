@@ -1,6 +1,6 @@
 # deep-dive
 
-Rigorous multi-agent deep-dive analysis for Claude Code. Point it at a codebase, a strategy or decision system, a design, or an open research question and it runs a structured investigation instead of giving a one-shot answer.
+Rigorous multi-agent deep-dive analysis — for **Claude** and **OpenAI Codex**. Point it at a codebase, a strategy or decision system, a design, or an open research question and it runs a structured investigation instead of giving a one-shot answer.
 
 ## What it does
 
@@ -49,18 +49,18 @@ No restart needed — Claude Code detects it in-session. Verify with `/skills`, 
 
 This follows the open **[Agent Skills](https://agentskills.io) standard**, so the same `SKILL.md` works in **Claude** and **OpenAI Codex**:
 
-| You are… | Tool | How |
-|---|---|---|
-| **Non-technical** | Claude app (claude.ai / desktop) | Upload **`deep-dive.skill`** (a zip) in the app's **Skills / Capabilities** settings → [Agent Skills docs](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/overview) |
-| **Developer** | Claude Code | the install above (drop `deep-dive/` in `~/.claude/skills/`) |
-| **Developer** | OpenAI Codex | copy `deep-dive/SKILL.md` (+ `references/`) into `.agents/skills/deep-dive/` in your repo, or `~/.agents/skills/deep-dive/` globally → [Codex skills docs](https://developers.openai.com/codex/skills) |
-| **Anyone** | any agent | it's just instructions — open `SKILL.md` and point your agent at it |
+| You use… | Add it by… |
+|---|---|
+| **Claude Code** — terminal, the **Code** tab of the Claude desktop app, [claude.ai/code](https://claude.ai/code), or an IDE | the install above (drop `deep-dive/` in `~/.claude/skills/`) |
+| **OpenAI Codex** — CLI, app, or IDE | copy `deep-dive/SKILL.md` (+ `references/`) into `.agents/skills/deep-dive/` (repo) or `~/.agents/skills/deep-dive/` (global) → [Codex skills docs](https://developers.openai.com/codex/skills) |
+| **Claude chat** — the **Chat** tab of the desktop app, or [claude.ai](https://claude.ai) | uploading **`deep-dive.skill`** (the zip) under **Customize → Skills** → [using Skills in Claude](https://support.claude.com/en/articles/12512180-use-skills-in-claude) |
+| **Any other agent** | pointing it at `SKILL.md` — it's just instructions |
 
 <sub>Menu names/commands drift between versions — the linked docs are the source of truth. One caveat specific to deep-dive: its **parallel multi-agent orchestration** is native to Claude Code; in Codex it runs as a single-agent, guided version of the same playbook (the method carries; the parallelism doesn't).</sub>
 
 **Runtime support** — the method runs everywhere; only orchestration degrades:
 
-| | Claude app | Claude Code | OpenAI Codex | Generic agent |
+| | Claude chat | Claude Code | OpenAI Codex | Other agents |
 |---|---|---|---|---|
 | **deep-dive** | Works (degraded: no repo/file access; serial lanes) | **Best** — parallel subagents + web | Strong — same lanes run **serially**, same rigor; external claims labeled *unverified* if no web | Works (degraded: serial lanes, local-only) |
 
