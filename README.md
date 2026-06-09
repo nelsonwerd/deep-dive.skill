@@ -28,39 +28,32 @@ Four built-in variants live in `deep-dive/references/`: **codebase audit**, **st
 
 ## Install
 
-Skills live in `~/.claude/skills/` (all projects) or `.claude/skills/` (a single project). Put the `deep-dive/` folder in either one.
+This is an open **[Agent Skill](https://agentskills.io)** — the same `deep-dive/` folder works in **Claude** and **OpenAI Codex**. Pick your tool:
 
-**From the packaged file:**
-
-```bash
-mkdir -p ~/.claude/skills
-unzip deep-dive.skill -d ~/.claude/skills/
-```
-
-**Or from a clone of this repo:**
-
-```bash
-git clone https://github.com/nelsonwerd/deep-dive-skill.git
-mkdir -p ~/.claude/skills
-cp -r deep-dive-skill/deep-dive ~/.claude/skills/
-```
-
-No restart needed — Claude Code detects it in-session. Verify with `/skills`, or just ask Claude what skills are available, and confirm `deep-dive` is listed.
-
-## Works in Claude *and* Codex
-
-This follows the open **[Agent Skills](https://agentskills.io) standard**, so the same `SKILL.md` works in **Claude** and **OpenAI Codex**:
-
-| You use… | Add it by… |
+| You use… | Install it by… |
 |---|---|
-| **Claude Code** — terminal, the **Code** tab of the Claude desktop app, [claude.ai/code](https://claude.ai/code), or an IDE | the install above (drop `deep-dive/` in `~/.claude/skills/`) |
-| **OpenAI Codex** — CLI, app, or IDE | copy `deep-dive/SKILL.md` (+ `references/`) into `.agents/skills/deep-dive/` (repo) or `~/.agents/skills/deep-dive/` (global) → [Codex skills docs](https://developers.openai.com/codex/skills) |
-| **Claude chat** — the **Chat** tab of the desktop app, or [claude.ai](https://claude.ai) | uploading **`deep-dive.skill`** (the zip) under **Customize → Skills** → [using Skills in Claude](https://support.claude.com/en/articles/12512180-use-skills-in-claude) |
-| **Any other agent** | pointing it at `SKILL.md` — it's just instructions |
+| **Claude Code** — terminal, the **Code** tab of the Claude desktop app, [claude.ai/code](https://claude.ai/code), or a VS Code / JetBrains IDE | dropping `deep-dive/` into `~/.claude/skills/` (all projects) or `.claude/skills/` (one project) |
+| **OpenAI Codex** — CLI, app, or IDE | dropping `deep-dive/` into `~/.agents/skills/` (all repos) or `.agents/skills/` (one repo), then restarting Codex |
+| **Claude chat** — the **Chat** tab of the desktop app, or [claude.ai](https://claude.ai) | uploading **`deep-dive.skill`** (the zip in this repo) under **Customize → Skills** |
+| **Any other agent** | pointing it at `deep-dive/SKILL.md` — it's just instructions |
 
-<sub>Menu names/commands drift between versions — the linked docs are the source of truth. One caveat specific to deep-dive: its **parallel multi-agent orchestration** is native to Claude Code; in Codex it runs as a single-agent, guided version of the same playbook (the method carries; the parallelism doesn't).</sub>
+The `.skill` file is just the `deep-dive/` folder zipped, so one `unzip` drops it into either skills home:
 
-**Runtime support** — the method runs everywhere; only orchestration degrades:
+```bash
+# Claude Code — detected in-session (verify with /skills):
+unzip deep-dive.skill -d ~/.claude/skills/
+
+# OpenAI Codex — the current skills path is ~/.agents/skills/; restart Codex after:
+mkdir -p ~/.agents/skills && unzip deep-dive.skill -d ~/.agents/skills/
+```
+
+Prefer a clone? `git clone https://github.com/nelsonwerd/deep-dive-skill.git`, then `cp -r deep-dive-skill/deep-dive` into whichever skills folder above.
+
+<sub>Menu names and exact paths shift between versions — the [Claude Skills](https://support.claude.com/en/articles/12512180-use-skills-in-claude) and [Codex Skills](https://developers.openai.com/codex/skills) docs are the source of truth. One caveat specific to deep-dive: its **parallel multi-agent orchestration** is native to Claude Code; in Codex (and other single-agent runtimes) it runs the same lanes **serially** — same method, lower cross-agent independence. The methodology is fully portable.</sub>
+
+## Runtime support
+
+The method runs everywhere; only orchestration degrades:
 
 | | Claude chat | Claude Code | OpenAI Codex | Other agents |
 |---|---|---|---|---|
