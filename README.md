@@ -16,6 +16,12 @@ It scales down for narrow scope (2–3 lanes) and up for broad, multi-domain wor
 
 Four built-in variants live in `deep-dive/references/`: **codebase audit**, **strategy / system evaluation**, **design evaluation**, and **open-ended research**.
 
+## Quickstart — try this first
+
+> **You type:** "Do a standard design evaluation of *<thing>*. Research-only."
+>
+> **You get back:** a `research/<topic>/` folder of specialist findings, a synthesis, an adversarial red-team pass, and a plain-English executive briefing with an honest 1–10 confidence rating. No code is touched unless you explicitly ask.
+
 > **Heads up — this skill is token-hungry by design.** A full run fans out 4–6 specialist agents (each writing thousands of words), then synthesis, follow-up verification, a red-team pass, and a briefing — easily 10+ agent calls and tens of thousands of tokens for a single analysis. That's the right trade for a high-stakes call (a ship/no-ship decision, real money on the line), and a great fit on a **Claude Max** plan or any setup where you're not token-constrained. On a smaller plan, reach for it deliberately: use the *Scale heuristics* in `SKILL.md` (2–3 lanes for narrow scope, skip the red-team for low-stakes work), or just ask for a single-pass review instead.
 
 ## Install
@@ -51,6 +57,14 @@ This follows the open **[Agent Skills](https://agentskills.io) standard**, so th
 | **Anyone** | any agent | it's just instructions — open `SKILL.md` and point your agent at it |
 
 <sub>Menu names/commands drift between versions — the linked docs are the source of truth. One caveat specific to deep-dive: its **parallel multi-agent orchestration** is native to Claude Code; in Codex it runs as a single-agent, guided version of the same playbook (the method carries; the parallelism doesn't).</sub>
+
+**Runtime support** — the method runs everywhere; only orchestration degrades:
+
+| | Claude app | Claude Code | OpenAI Codex | Generic agent |
+|---|---|---|---|---|
+| **deep-dive** | Works (degraded: no repo/file access; serial lanes) | **Best** — parallel subagents + web | Strong — same lanes run **serially**, same rigor; external claims labeled *unverified* if no web | Works (degraded: serial lanes, local-only) |
+
+See the *Environment & fallbacks* section in `SKILL.md` for the exact fallbacks (no subagents → serial; no web → label external claims unverified; progress tools → skip).
 
 ## Use it
 
