@@ -62,7 +62,7 @@ This follows the open **[Agent Skills](https://agentskills.io) standard**, so th
 
 | | Claude chat | Claude Code | OpenAI Codex | Other agents |
 |---|---|---|---|---|
-| **deep-dive** | Works (degraded: no repo/file access; serial lanes) | **Best** — parallel subagents + web | Strong — same lanes run **serially**, same rigor; external claims labeled *unverified* if no web | Works (degraded: serial lanes, local-only) |
+| **deep-dive** | Works (degraded: no repo/file access; serial lanes) | **Best** — parallel subagents + web | Strong — same lanes run **serially** (lower cross-agent independence, so confidence is capped); external claims labeled *unverified* if no web | Works (degraded: serial lanes, local-only) |
 
 See the *Environment & fallbacks* section in `SKILL.md` for the exact fallbacks (no subagents → serial; no web → label external claims unverified; progress tools → skip).
 
