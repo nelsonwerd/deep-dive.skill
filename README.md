@@ -38,9 +38,9 @@ unzip deep-dive.skill -d ~/.claude/skills/
 **Or from a clone of this repo:**
 
 ```bash
-git clone https://github.com/nelsonwerd/deep-dive.skill.git
+git clone https://github.com/nelsonwerd/deep-dive-skill.git
 mkdir -p ~/.claude/skills
-cp -r deep-dive.skill/deep-dive ~/.claude/skills/
+cp -r deep-dive-skill/deep-dive ~/.claude/skills/
 ```
 
 No restart needed — Claude Code detects it in-session. Verify with `/skills`, or just ask Claude what skills are available, and confirm `deep-dive` is listed.
