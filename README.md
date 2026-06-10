@@ -12,7 +12,7 @@ For a complex, investigative task, the skill runs a multi-phase pipeline:
 4. **Red-team** — an adversarial reviewer tries to break the conclusions.
 5. **Executive briefing** — a plain-English verdict with an honest 1–10 confidence rating.
 
-One honest caveat it states up front: every agent is the *same model*, so the loop catches where independent reasoning **diverges**, not blind spots they all **share** — so it weights externally-checkable evidence (code you can run, `git`, data, cited sources) above claims resting on model judgment, and caps confidence when a conclusion stands only on shared priors.
+One honest caveat it states up front: every agent is the *same model*, so the loop catches where independent reasoning **diverges**, not blind spots they all **share** — so it weights externally-checkable evidence (code you can run, `git`, data, cited sources) above claims resting on model judgment, and caps confidence when a conclusion stands only on shared priors. The briefing makes this explicit: every confidence rating carries a tally of how many load-bearing conclusions are externally verified vs. resting on model judgment, and the headline number is **capped by that ratio**.
 
 It scales down for narrow scope (2–3 lanes) and up for broad, multi-domain work (6 lanes). By default it runs in **pure research mode** — it writes markdown findings and changes no code unless you explicitly ask.
 
